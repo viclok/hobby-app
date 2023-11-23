@@ -8,31 +8,31 @@
             try {
     
                 let numPeopleQuery = parseInt(numPeople)
+                let apiEndpoint = "https://www.boredapi.com/api/activity"
+                let response
+                let data
                 if(!isNaN(numPeopleQuery)) {
-                    let apiEndpoint = "https://www.boredapi.com/api/activity"
-                    let response
-                    let data
-                    if (numPeopleQuery == 0) {
-                        response = await fetch(apiEndpoint)
-                        data = await response.json()
-                        apiResult = data
-                        numPeople = ""
-                        return
-                    } else if (numPeopleQuery > 0) {
+                    if (numPeopleQuery >= 1 && numPeopleQuery <= 4) {
                         response = await fetch(apiEndpoint + "?participants=" + numPeople)
                         data = await response.json()
                         apiResult = data
-                        numPeople = ""
+                        // numPeople = ""
                         return
                     } else {
-                        alert("Please enter a number greater than 0")
+                        alert("Please enter a number from 1-4")
                         numPeople = ""
                         return
                     }
                     
     
                 } else {
-                    alert("Please enter a valid number")
+                    if (numPeople == "") {
+                            response = await fetch(apiEndpoint)
+                            data = await response.json()
+                            apiResult = data
+                            return 
+                        }
+                    alert("Please enter a number from 1-4")
                     numPeople = ""
                     return
                 }
@@ -46,7 +46,7 @@
     <main>
         <h1>Activity Finder</h1>
     
-        <p>Enter 0 for any number of participants</p>
+        <p>Leave blank for suggestions for any number of people</p>
         <label for="numPeopleInput">Enter number of people:</label>
         <input type="text" id="numPeopleInput" bind:value={numPeople}/>
     
