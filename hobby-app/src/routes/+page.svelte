@@ -64,4 +64,14 @@
             </div>
         {/if}
     </main>
+
+    <style>
+        main {
+            display:flex;
+            flex-direction: column;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }    
+    </style>
     
