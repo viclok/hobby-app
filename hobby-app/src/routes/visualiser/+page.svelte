@@ -1,9 +1,5 @@
 <script>
-    // import PocketBase, { AdminService } from 'pocketbase'
-    // import { PUBLIC_POCKETBASEEMAIL, PUBLIC_POCKETBASEPASSWORD } from "$env/static/public"
-
-    // const pb = new PocketBase("http://127.0.0.1:8090")
-    // pb.admins.authWithPassword(PUBLIC_POCKETBASEEMAIL, PUBLIC_POCKETBASEPASSWORD)
+    export let data
 
 
 </script>
@@ -24,6 +20,15 @@
     
     <button type="submit">Submit</button>
 </form>
+
+<h1>Hobbies</h1>
+<div>
+    <ol>
+        {#each data?.records as record}
+        <li>{`Hobby: ${record.hobby}`}</li>
+        {/each}
+    </ol>
+</div>
 
 
 
